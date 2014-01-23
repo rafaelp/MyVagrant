@@ -11,7 +11,8 @@ Vagrant::Config.run do |config|
   config.vm.customize ["modifyvm", :id, "--memory", 512]
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
-  config.vm.forward_port 5432, 5432
+  config.vm.forward_port 5432, 5432 # PorstgreSQL
+  config.vm.forward_port 6379, 6379 # Redi
   #config.vm.forward_port 80, 8080
 
   config.vm.provision :chef_solo do |chef|
@@ -53,9 +54,12 @@ Vagrant::Config.run do |config|
     chef.add_recipe "rvm::vagrant"
     chef.add_recipe "rvm::system"
 
-    # PostgreSQL Because we Love it
+    # PostgreSQL
     chef.add_recipe "set_locale::postgres"
 
+    # Redis
+    chef.add_recipe "redisio::install"
+    chef.add_recipe "redisio::enable"
 
     #  Configuration:
     #  The JSON below is where we configure or modify our recipes attributes

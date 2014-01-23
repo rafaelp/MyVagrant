@@ -6,8 +6,11 @@ SITE
     chef_gem (0.0.5)
     imagemagick (0.2.2)
     locale (0.0.2)
+    redisio (1.7.0)
+      ulimit (>= 0.1.2)
     runit (1.0.4)
       build-essential (>= 0.0.0)
+    ulimit (0.3.2)
 
 GIT
   remote: https://github.com/chef-cookbooks/chef-oh-my-zsh
@@ -87,6 +90,7 @@ DEPENDENCIES
   nodejs (>= 0)
   oh_my_zsh (>= 0)
   postgresql (>= 0)
+  redisio (>= 0)
   rvm (>= 0)
   set_locale (>= 0)
   xvfb (>= 0)

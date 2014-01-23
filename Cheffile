@@ -18,6 +18,7 @@ cookbook 'rvm', github: 'fnichol/chef-rvm'
 # Database
 cookbook 'set_locale', github: 'chef-cookbooks/chef-postgres-locale', ref: '0.1.1'
 cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.5.0'
+cookbook 'redisio'
 
 # Terminal utilities
 cookbook 'oh_my_zsh', github: 'chef-cookbooks/chef-oh-my-zsh', ref: '0.1.0'

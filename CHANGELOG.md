@@ -1,10 +1,10 @@
 # Changelog
 
-## 0.0.1 (Unreleased)
-
 ### cookbooks
 
-- Git, ImageMagick, RVM, NodeJS, Firefox, PostgreSQL
+2014-01-23 - Redis
+
+2014-01-21 - Git, ImageMagick, RVM, NodeJS, Firefox, PostgreSQL
 
 ### improvements
 
