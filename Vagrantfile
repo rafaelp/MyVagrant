@@ -21,7 +21,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :forwarded_port, guest: 5432, host: 5432 # PorstgreSQL
-  config.vm.network :forwarded_port, guest: 6379, host: 6379 # Redi
+  config.vm.network :forwarded_port, guest: 6379, host: 6379 # Redis
+  config.vm.network :forwarded_port, guest: 9200, host: 9200 # Elasticsearch
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -57,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
@@ -144,6 +145,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "redisio::install"
     chef.add_recipe "redisio::enable"
 
+    # Elastic Search
+    chef.add_recipe "java"
+    chef.add_recipe "elasticsearch"
+
     #  Configuration:
     #  The JSON below is where we configure or modify our recipes attributes
     #  Every recipe has an 'attributes' folder, and these are accessible using the hash format
@@ -198,6 +203,36 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           login: :vagrant,
           plugins: %w{git bundler ruby vi rails}
         }]
+      },
+
+      java: {
+        install_flavor: "openjdk",
+        jdk_version: "7"
+      },
+
+      elasticsearch: {
+        cluster_name: 'elasticsearch',
+        path: {
+          data: %w| /usr/local/var/data/elasticsearch/disk1 /usr/local/var/data/elasticsearch/disk2 |
+        },
+        data: {
+          devices: {
+            "/dev/sdb" => {
+              file_system:      "ext3",
+              mount_options:    "rw,user",
+              mount_path:       "/usr/local/var/data/elasticsearch/disk1",
+              format_command:   "mkfs.ext3 -F",
+              fs_check_command: "dumpe2fs"
+            },
+            "/dev/sdc" => {
+              file_system:      "ext3",
+              mount_options:    "rw,user",
+              mount_path:       "/usr/local/var/data/elasticsearch/disk2",
+              format_command:   "mkfs.ext3 -F",
+              fs_check_command: "dumpe2fs"
+            }
+          }
+        }
       }
     }
   end
