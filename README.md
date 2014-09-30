@@ -116,10 +116,6 @@ Don't you want to play with that and make a pull-request!?
 
 1. Add cookbook for mongodb
 
-1. Add cookbook for memcached
-
-1. Add cookbook for elasticsearch
-
 ## Issues
 
 If you have problems, please create a [Github Issue](https://github.com/rafaelp/MyVagrant/issues).

@@ -13,6 +13,7 @@ cookbook 'xvfb',    github: 'chef-cookbooks/chef-xvfb'
 cookbook 'firefox', github: 'substantial/cookbook-firefox'
 cookbook 'elasticsearch'
 cookbook 'java'
+cookbook 'memcached'
 
 # Manage ruby installations
 cookbook 'rvm', github: 'fnichol/chef-rvm'

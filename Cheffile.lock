@@ -10,11 +10,18 @@ SITE
     imagemagick (0.2.2)
     java (1.19.2)
     locale (0.0.2)
+    memcached (1.7.2)
+      runit (~> 1.0)
+      yum (~> 3.0)
+      yum-epel (>= 0.0.0)
     redisio (1.7.0)
       ulimit (>= 0.1.2)
     runit (1.0.4)
       build-essential (>= 0.0.0)
     ulimit (0.3.2)
+    yum (3.3.2)
+    yum-epel (0.5.1)
+      yum (~> 3.0)
 
 GIT
   remote: https://github.com/chef-cookbooks/chef-oh-my-zsh
@@ -93,6 +100,7 @@ DEPENDENCIES
   imagemagick (>= 0)
   java (>= 0)
   locale (>= 0)
+  memcached (>= 0)
   nodejs (>= 0)
   oh_my_zsh (>= 0)
   postgresql (>= 0)
