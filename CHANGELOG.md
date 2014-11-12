@@ -12,4 +12,6 @@
 
 ### improvements
 
+2014-11-11 - Cleanup old and unused cookbooks and updates PostgreSQL to 9.3
+
 ### bug fixes

@@ -36,11 +36,15 @@ So, feel free to copy and modify as your need.
 
 		$ librarian-chef install
 
+1. Install omnibus plugin:
+
+		$ vagrant plugin install vagrant-omnibus
+
 1. Run Vagrant (this will take up to 10 minutes at first time)
 
 		$ vagrant up
 
-    Attention: You should not be running postgresql on your machine.
+    Attention: You cannot be running postgresql on your machine.
 
 1. Be Happy!
 

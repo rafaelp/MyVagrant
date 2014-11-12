@@ -9,6 +9,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
+  # Chef version
+  config.omnibus.chef_version = '11.6.0'
+
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise32"
 
@@ -117,33 +120,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "curl::devel"
     chef.add_recipe "locale"
 
-    # Avoiding uft-8 problem
-    chef.add_recipe "set_locale"
-
     # Virtual server X Frame Buffer
-    chef.add_recipe "xvfb"
-    chef.add_recipe "firefox"
+    # chef.add_recipe "xvfb"
+    # chef.add_recipe "firefox"
 
     # Image handling
-    chef.add_recipe "imagemagick"
-    chef.add_recipe "imagemagick::devel"
-    chef.add_recipe "imagemagick::rmagick"
-
-    # This recipe is necessary if you're working with Rails & needs a JS runtime
-    chef.add_recipe "nodejs"
-
-    # Make my terminal looks good
-    chef.add_recipe "oh_my_zsh"
+    # chef.add_recipe "imagemagick"
+    # chef.add_recipe "imagemagick::devel"
+    # chef.add_recipe "imagemagick::rmagick"
 
     # RVM for rubies management
-    chef.add_recipe "rvm::vagrant"
-    chef.add_recipe "rvm::system"
-
-    # PostgreSQL
-    chef.add_recipe "set_locale::postgres"
+    # chef.add_recipe "rvm::vagrant"
+    # chef.add_recipe "rvm::system"
 
     # Redis
-    chef.add_recipe "redisio::install"
+    chef.add_recipe "redisio"
     chef.add_recipe "redisio::enable"
 
     # Elastic Search
@@ -153,33 +144,38 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Memcached
     chef.add_recipe "memcached"
 
+    # Postgresql
+    chef.add_recipe "postgresql"
+    chef.add_recipe "postgresql::server"
+    chef.add_recipe "postgresql::contrib"
+
     #  Configuration:
     #  The JSON below is where we configure or modify our recipes attributes
     #  Every recipe has an 'attributes' folder, and these are accessible using the hash format
 
     chef.json = {
       # Installing The latest ruby version
-      rvm: {
-        default_ruby: 'ruby-2.1.0',
-
-        # Installing multiple ruby versions
-        rubies: ['2.0.0-p0'],
-        upgrade: :latest,
-
-        # Gems that will be accessed globally
-        global_gems: [
-          { name: :thin },
-          { name: :bundler },
-
-          # Add heroku to make deployment easier
-          { name: :heroku },
-        ],
-
-        # Somehow needed for Vagrant
-        vagrant: {
-          system_chef_solo: '/opt/vagrant_ruby/bin/chef-solo'
-        }
-      },
+      # rvm: {
+      #   default_ruby: 'ruby-2.1.0',
+      #
+      #   # Installing multiple ruby versions
+      #   rubies: ['2.0.0-p0'],
+      #   upgrade: :latest,
+      #
+      #   # Gems that will be accessed globally
+      #   global_gems: [
+      #     { name: :thin },
+      #     { name: :bundler },
+      #
+      #     # Add heroku to make deployment easier
+      #     { name: :heroku },
+      #   ],
+      #
+      #   # Somehow needed for Vagrant
+      #   vagrant: {
+      #     system_chef_solo: '/opt/vagrant_ruby/bin/chef-solo'
+      #   }
+      # },
 
       # Configuring postgreSQL
       # WARNING:
@@ -187,8 +183,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       postgresql: {
         listen_addresses: "*",
         pg_hba: [
-            "host all all 0.0.0.0/0 trust",
-            "host all all ::1/0 trust",
+          { type: "host", db: "all", user: "all", addr: "0.0.0.0/0", method: "trust" },
+          { type: "host", db: "all", user: "all", addr: "::1/0", method: "trust" },
+          { type: "host", db: "all", user: "postgres", addr: "::1/128", method: "trust" },
         ],
         users: [
           {
@@ -265,6 +262,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.validation_client_name = "ORGNAME-validator"
 
   config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
-  config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
+  # config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
   config.vm.provision :shell, inline: %q{sudo bash -c "echo 'UseDNS no' >> /etc/ssh/sshd_config"}
 end
