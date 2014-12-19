@@ -62,13 +62,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["setextradata", :id, "VBoxInternal/Devices/ahci/0/LUN#[0]/Config/IgnoreFlush", "1"]
   end
 
   # config.vm.provider(:vmware_fusion) do |v|
-  #   v.vmx["memsize"] = "1024"
+  #   v.vmx["memsize"] = "2048"
   #   v.vmx["MemTrimRate"] = "0"
   #   v.vmx["sched.mem.pshare.enable"] = "FALSE"
   # end
