@@ -21,3 +21,4 @@ cookbook 'ulimit',  github: 'bmhatfield/chef-ulimit' # dependency of redisio
 # Database
 cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.14.1'
 cookbook 'redisio', github: 'brianbianco/redisio'
+cookbook 'mongodb'

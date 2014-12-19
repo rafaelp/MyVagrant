@@ -27,6 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 6379, host: 6379 # Redis
   config.vm.network :forwarded_port, guest: 9200, host: 9200 # Elasticsearch
   config.vm.network :forwarded_port, guest: 11211, host: 11211 # Memcached
+  config.vm.network :forwarded_port, guest: 27017, host: 27017 # MongoDB
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -155,6 +156,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "postgresql"
     chef.add_recipe "postgresql::server"
     chef.add_recipe "postgresql::contrib"
+
+    # MongoDB
+    chef.add_recipe "mongodb::default"
 
     #  Configuration:
     #  The JSON below is where we configure or modify our recipes attributes

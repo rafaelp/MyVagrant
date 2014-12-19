@@ -114,12 +114,6 @@ Vagrant::Config.run do |config|
 end
 ```
 
-## To-do
-
-Don't you want to play with that and make a pull-request!?
-
-1. Add cookbook for mongodb
-
 ## Issues
 
 If you have problems, please create a [Github Issue](https://github.com/rafaelp/MyVagrant/issues).

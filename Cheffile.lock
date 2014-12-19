@@ -8,16 +8,22 @@ SITE
       7-zip (>= 0.0.0)
       windows (>= 0.0.0)
     build-essential (2.1.2)
-    chef_gem (0.1.0)
     chef_handler (1.1.6)
     elasticsearch (0.3.10)
       ark (>= 0.2.4)
-    imagemagick (0.2.3)
     java (1.28.0)
     locale (1.0.2)
     memcached (1.7.2)
       runit (~> 1.0)
       yum (~> 3.0)
+      yum-epel (>= 0.0.0)
+    mongodb (0.16.2)
+      apt (>= 1.8.2)
+      python (>= 0.0.0)
+      runit (>= 1.5.0)
+      yum (>= 3.0)
+    python (1.4.6)
+      build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
     runit (1.5.10)
       build-essential (>= 0.0.0)
@@ -54,14 +60,6 @@ GIT
       runit (>= 0.0.0)
 
 GIT
-  remote: https://github.com/fnichol/chef-rvm
-  ref: master
-  sha: 8a877e9b497f8fb06dfe6f5975561331b3924243
-  specs:
-    rvm (0.10.1)
-      chef_gem (>= 0.0.0)
-
-GIT
   remote: https://github.com/phlipper/chef-curl
   ref: master
   sha: d1f6690319eb4e5278af0060eb053937541d8d90
@@ -76,34 +74,17 @@ GIT
     postgresql (0.14.1)
       apt (>= 1.9.0)
 
-GIT
-  remote: https://github.com/substantial/cookbook-firefox
-  ref: master
-  sha: 09d74e7610baf72e57b538a9053e10344920e4ce
-  specs:
-    firefox (0.0.4)
-
-GIT
-  remote: https://github.com/u2i/chef-xvfb
-  ref: master
-  sha: fb4ff5119d600edc0480134ff07b7641a20f87b7
-  specs:
-    xvfb (0.0.1)
-
 DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
   curl (>= 0)
   elasticsearch (>= 0)
-  firefox (>= 0)
   git (>= 0)
-  imagemagick (>= 0)
   java (>= 0)
   locale (>= 0)
   memcached (>= 0)
+  mongodb (>= 0)
   postgresql (>= 0)
   redisio (>= 0)
-  rvm (>= 0)
   ulimit (>= 0)
-  xvfb (>= 0)
 

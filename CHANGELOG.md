@@ -2,6 +2,8 @@
 
 ### cookbooks
 
+2014-12-18 - MongoDB
+
 2014-09-27 - Memcached
 
 2014-02-10 - Elasticsearch
