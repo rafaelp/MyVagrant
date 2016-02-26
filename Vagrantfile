@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Chef version
-  config.omnibus.chef_version = '11.6.0'
+  # config.omnibus.chef_version = '11.6.0'
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise32"
