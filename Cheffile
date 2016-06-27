@@ -4,7 +4,7 @@ site 'http://community.opscode.com/api/v1'
 
 cookbook 'apt'
 cookbook 'build-essential'
-cookbook 'git',     github: 'fnichol/chef-git'
+cookbook 'git'
 cookbook 'curl',    github: 'phlipper/chef-curl'
 cookbook 'locale'
 # cookbook 'imagemagick'
@@ -19,6 +19,6 @@ cookbook 'ulimit',  github: 'bmhatfield/chef-ulimit' # dependency of redisio
 # cookbook 'rvm', github: 'fnichol/chef-rvm', ref: 'v0.9.0'
 
 # Database
-cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.14.1'
+cookbook 'postgresql', github: 'phlipper/chef-postgresql', ref: '0.16.1'
 cookbook 'redisio', github: 'brianbianco/redisio'
 cookbook 'mongodb'

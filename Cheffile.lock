@@ -1,63 +1,74 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    7-zip (1.0.2)
-      windows (>= 1.2.2)
-    apt (2.6.0)
-    ark (0.9.0)
-      7-zip (>= 0.0.0)
+    apt (4.0.1)
+      compat_resource (>= 12.10)
+    ark (1.1.0)
+      build-essential (>= 0.0.0)
+      seven_zip (>= 0.0.0)
       windows (>= 0.0.0)
-    build-essential (2.1.2)
-    chef_handler (1.1.6)
-    elasticsearch (0.3.10)
-      ark (>= 0.2.4)
-    java (1.28.0)
-    locale (1.0.2)
-    memcached (1.7.2)
-      runit (~> 1.0)
-      yum (~> 3.0)
+    build-essential (6.0.0)
+      compat_resource (>= 12.10)
+      mingw (>= 1.1)
+      seven_zip (>= 0.0.0)
+    chef-sugar (3.3.0)
+    chef_handler (1.4.0)
+    compat_resource (12.10.6)
+    dmg (2.4.0)
+    elasticsearch (2.3.2)
+      apt (>= 0.0.0)
+      ark (>= 0.0.0)
+      chef-sugar (>= 0.0.0)
+      yum (>= 0.0.0)
+    git (4.5.0)
+      build-essential (>= 0.0.0)
+      dmg (>= 0.0.0)
+      windows (>= 0.0.0)
       yum-epel (>= 0.0.0)
+    java (1.39.0)
+      apt (>= 0.0.0)
+    locale (1.1.0)
+    memcached (3.0.1)
+      compat_resource (>= 12.10)
+      runit (>= 1.2.0)
+      yum-epel (>= 0.0.0)
+    mingw (1.2.2)
+      compat_resource (>= 0.0.0)
+      seven_zip (>= 0.0.0)
     mongodb (0.16.2)
       apt (>= 1.8.2)
       python (>= 0.0.0)
       runit (>= 1.5.0)
       yum (>= 3.0)
+    packagecloud (0.2.3)
     python (1.4.6)
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
-    runit (1.5.10)
-      build-essential (>= 0.0.0)
-      yum (~> 3.0)
-      yum-epel (>= 0.0.0)
-    windows (1.34.8)
+    runit (1.7.8)
+      packagecloud (>= 0.0.0)
+    seven_zip (2.0.1)
+      windows (>= 1.2.2)
+    windows (1.44.0)
       chef_handler (>= 0.0.0)
-    yum (3.4.1)
-    yum-epel (0.5.2)
-      yum (~> 3.0)
+    yum (3.11.0)
+    yum-epel (0.7.0)
+      yum (>= 3.6.3)
 
 GIT
   remote: https://github.com/bmhatfield/chef-ulimit
   ref: master
-  sha: a049579196154ab938951cc1ba92221838d4c55f
+  sha: c83088e46876479ce4f919aeacfca708f3322e93
   specs:
-    ulimit (0.3.3)
+    ulimit (0.4.0)
 
 GIT
   remote: https://github.com/brianbianco/redisio
   ref: master
-  sha: b1707226879de5560de650c2ddce780297fe35d7
+  sha: ed8d6ff6a8f523e4a4d28ec87ec43fd577ac1588
   specs:
-    redisio (2.2.4)
+    redisio (2.4.2)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
-
-GIT
-  remote: https://github.com/fnichol/chef-git
-  ref: master
-  sha: 6c19cbefcdad5ec0f62a64dae1f656d660698ea3
-  specs:
-    git (0.9.0)
-      runit (>= 0.0.0)
 
 GIT
   remote: https://github.com/phlipper/chef-curl
@@ -68,10 +79,10 @@ GIT
 
 GIT
   remote: https://github.com/phlipper/chef-postgresql
-  ref: 0.14.1
-  sha: 17705405a77b2d35c829cceaf99d14534d9c5706
+  ref: 0.16.1
+  sha: 13a8c2ff4ec2b778a29ac4891740806807ce6e6f
   specs:
-    postgresql (0.14.1)
+    postgresql (0.16.1)
       apt (>= 1.9.0)
 
 DEPENDENCIES
