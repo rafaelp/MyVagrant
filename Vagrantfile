@@ -275,4 +275,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, inline: %q{cd /vagrant && export DISPLAY=:99}
   # config.vm.provision :shell, inline: %q{sudo /etc/init.d/xvfb start}
   config.vm.provision :shell, inline: %q{sudo bash -c "echo 'UseDNS no' >> /etc/ssh/sshd_config"}
+  config.vm.provision :shell, inline: %q{sudo bash -c "echo 'network.host: 0.0.0.0' >> /etc/elasticsearch/elasticsearch.yml"}
 end
